@@ -24,7 +24,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-hei
 h1{font-size:clamp(2.5rem,6.4vw,4.9rem)}h2{font-size:clamp(1.9rem,4vw,3rem)}h3{font-size:1.35rem;line-height:1.2}
 p{margin:0}a{color:inherit}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-section{padding:96px 0}
+section{padding:72px 0}
 .eyebrow{font:500 .75rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:block}
 .lede{color:var(--mute);font-size:1.1rem;max-width:58ch;margin-top:18px}
 .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--ink);color:var(--bg);padding:8px 14px;z-index:99;border-radius:8px}
@@ -39,9 +39,9 @@ nav a{text-decoration:none;font-size:.93rem;color:var(--mute)}nav a:hover{color:
 .btn.p{background:var(--ink);color:var(--bg)}.btn.p:hover{transform:translateY(-2px);background:var(--acc);border-color:var(--acc);color:#fff}
 .btn.s{background:transparent;color:var(--ink)}.btn.s:hover{background:var(--surf)}
 .btn.sm{padding:9px 16px;font-size:.85rem}
-.tgl{position:relative;width:56px;height:30px;border-radius:999px;border:1px solid var(--line);background:var(--surf);cursor:pointer;padding:0;flex:none}.tgl::before{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--ink);transition:transform .25s,background .25s}.tgl.on::before{transform:translateX(26px);background:var(--acc)}.tgl svg{position:absolute;top:7px;width:14px;height:14px;pointer-events:none;color:var(--mute)}.tgl .su{left:7px}.tgl .mo{right:7px}
+.tgl{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0;flex:none}.tgl:hover{background:var(--surf)}.tgl svg{width:20px;height:20px;pointer-events:none}.tgl .mo,.tgl[data-mode=dark] .su{display:none}.tgl[data-mode=dark] .mo{display:block}
 .menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit}
-.hero{padding:72px 0 88px}
+.hero{padding:56px 0 64px}
 .hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .hero h1 em{font-style:italic;color:var(--acc)}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
@@ -59,7 +59,7 @@ nav a{text-decoration:none;font-size:.93rem;color:var(--mute)}nav a:hover{color:
 .node.human.on .ic{background:var(--sig);border-color:var(--sig)}
 .log{margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font:.78rem/1.5 var(--mono);color:var(--mute);min-height:3.4em}
 .note{font:.72rem var(--mono);color:var(--mute);margin-top:10px}
-.grid{display:grid;gap:20px;margin-top:48px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.grid{display:grid;gap:20px;margin-top:36px}.svc{align-items:start}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
 .card{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .25s,border-color .25s}
 .card:hover{transform:translateY(-4px);border-color:var(--acc)}
 .card p{color:var(--mute);font-size:.97rem;margin-top:10px}
@@ -106,7 +106,7 @@ footer{border-top:1px solid var(--line);padding:36px 0 48px;font-size:.88rem;col
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 @media (max-width:900px){.hgrid,.about,.calc{grid-template-columns:1fr}.g3,.steps{grid-template-columns:1fr 1fr}.step:nth-child(n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;border-bottom:1px solid var(--line);gap:16px}nav ul.open{display:flex}.menu{display:block}.hide-m{display:none}section{padding:72px 0}}
+nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;border-bottom:1px solid var(--line);gap:16px}nav ul.open{display:flex}.menu{display:block}.hide-m{display:none}section{padding:52px 0}}
 @media (max-width:600px){.g3,.g2,.steps,.row{grid-template-columns:1fr}.node .tag{display:none}.node{grid-template-columns:36px 1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
 </style>
@@ -116,7 +116,7 @@ nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:col
 <header><div class="wrap nav">
 <a class="logo" href="#top" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/><rect x="13" y="2" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="2" y="13" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="9" height="9" rx="2" fill="var(--sig)"/></svg><span data-c="brand"></span></a>
 <nav aria-label="Primary"><ul id="nav"></ul></nav>
-<div style="display:flex;gap:10px;align-items:center"><a class="btn p sm hide-m" href="#contact" data-c="cta"></a><button class="tgl" id="tg" type="button" role="switch" aria-checked="false" aria-label="Dark mode"><svg class="su" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="mo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></button><button class="menu" id="mb" aria-expanded="false" aria-controls="nav">Menu</button></div>
+<div style="display:flex;gap:10px;align-items:center"><a class="btn p sm hide-m" href="#contact" data-c="cta"></a><button class="tgl" id="tg" type="button" aria-label="Toggle theme"><svg class="su" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="mo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></button><button class="menu" id="mb" aria-expanded="false" aria-controls="nav">Menu</button></div>
 </div></header>
 
 <main id="main">
@@ -310,7 +310,8 @@ f.onsubmit=async e=>{e.preventDefault();let bad=0;
 /* light / dark toggle (defaults to system setting, remembers choice) */
 const root=document.documentElement,tb=$("#tg");
 function eff(){return root.dataset.mode||root.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}
-function paint(){const d=eff()=="dark";tb.setAttribute("aria-checked",d);tb.classList.toggle("on",d)}
+const TH={light:{"--bg":"#f4f1ea","--surf":"#fbf9f4","--ink":"#14150f","--mute":"#5c5d52","--line":"#dcd7ca","--acc":"#1f6f5c","--sig":"#d9531e","--accsoft":"#e3eee9"},dark:{"--bg":"#0f110d","--surf":"#171a14","--ink":"#eeebe2","--mute":"#a1a395","--line":"#2b2f26","--acc":"#5fc2a5","--sig":"#ff8a54","--accsoft":"#1a2b25"}};
+function paint(){const m=eff();Object.entries(TH[m]).forEach(([k,v])=>root.style.setProperty(k,v));root.style.colorScheme=m;tb.dataset.mode=m}
 try{const s=localStorage.getItem("theme");if(s)root.dataset.mode=s}catch(_){}root.dataset.mode=eff();
 paint();
 tb.onclick=()=>{const n=eff()=="dark"?"light":"dark";root.dataset.mode=n;try{localStorage.setItem("theme",n)}catch(_){}paint()};
