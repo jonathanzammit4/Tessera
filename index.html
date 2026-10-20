@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tessera — AI workflow automation for growing businesses</title>
+<meta name="description" content="Tessera designs AI workflow automation, assistants and CRM automation that remove repetitive work, with people approving what matters.">
+<meta property="og:title" content="Tessera — AI workflow automation for growing businesses">
+<meta property="og:description" content="Practical AI automation for SMBs: fewer repeated tasks, faster replies, humans in control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1ea;--surf:#fbf9f4;--ink:#14150f;--mute:#5c5d52;--line:#dcd7ca;--acc:#1f6f5c;--sig:#d9531e;--accsoft:#e3eee9;
+--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f110d;--surf:#171a14;--ink:#eeebe2;--mute:#a1a395;--line:#2b2f26;--acc:#5fc2a5;--sig:#ff8a54;--accsoft:#1a2b25;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f110d;--surf:#171a14;--ink:#eeebe2;--mute:#a1a395;--line:#2b2f26;--acc:#5fc2a5;--sig:#ff8a54;--accsoft:#1a2b25;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.08;margin:0}
+h1{font-size:clamp(2.5rem,6.4vw,4.9rem)}h2{font-size:clamp(1.9rem,4vw,3rem)}h3{font-size:1.35rem;line-height:1.2}
+p{margin:0}a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+.eyebrow{font:500 .75rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:block}
+.lede{color:var(--mute);font-size:1.1rem;max-width:58ch;margin-top:18px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--ink);color:var(--bg);padding:8px 14px;z-index:99;border-radius:8px}
+:focus-visible{outline:2px solid var(--sig);outline-offset:3px;border-radius:6px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:500 1.35rem var(--serif);text-decoration:none;display:flex;gap:10px;align-items:center}
+.logo svg{width:22px;height:22px}
+nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-size:.93rem;color:var(--mute)}nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font:500 .95rem var(--sans);text-decoration:none;border:1px solid var(--ink);cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn.p{background:var(--ink);color:var(--bg)}.btn.p:hover{transform:translateY(-2px);background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.s{background:transparent;color:var(--ink)}.btn.s:hover{background:var(--surf)}
+.btn.sm{padding:9px 16px;font-size:.85rem}
+.tgl{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:8px 14px;font:500 .82rem var(--sans);cursor:pointer;min-width:68px}.tgl:hover{background:var(--surf)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit}
+.hero{padding:72px 0 88px}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.fine{font-size:.85rem;color:var(--mute);margin-top:18px}
+.flow{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 30px 60px -40px rgba(0,0,0,.35)}
+.flow .top{display:flex;justify-content:space-between;font:500 .72rem var(--mono);color:var(--mute);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.node{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:1px solid transparent;color:var(--ink);padding:12px;border-radius:12px;font:inherit;cursor:pointer;position:relative;transition:background .3s,border-color .3s}
+.node+.node::before{content:"";position:absolute;left:29px;top:-12px;height:12px;border-left:1.5px dashed var(--line)}
+.node .ic{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;font:500 .8rem var(--mono);color:var(--mute);transition:.3s}
+.node b{display:block;font-weight:500;font-size:.98rem}.node span.d{font-size:.84rem;color:var(--mute)}
+.node .tag{font:.68rem var(--mono);color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:2px 8px}
+.node.on{background:var(--accsoft);border-color:var(--acc)}
+.node.on .ic{background:var(--acc);border-color:var(--acc);color:#fff}
+.node.human.on{background:color-mix(in srgb,var(--sig) 12%,transparent);border-color:var(--sig)}
+.node.human.on .ic{background:var(--sig);border-color:var(--sig)}
+.log{margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font:.78rem/1.5 var(--mono);color:var(--mute);min-height:3.4em}
+.note{font:.72rem var(--mono);color:var(--mute);margin-top:10px}
+.grid{display:grid;gap:20px;margin-top:48px}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--acc)}
+.card p{color:var(--mute);font-size:.97rem;margin-top:10px}
+.card .k{font:500 .7rem var(--mono);color:var(--sig);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:block}
+.svc details{margin-top:14px;border-top:1px solid var(--line);padding-top:12px;font-size:.92rem;color:var(--mute)}
+summary{cursor:pointer;color:var(--ink);font-weight:500;font-size:.9rem}
+.svc details div{margin-top:8px}.svc details b{color:var(--ink);font-weight:500}
+.alt{background:var(--surf);border-block:1px solid var(--line)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg)}
+.step{padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);counter-increment:s}
+.step:nth-child(3n){border-right:0}.step:nth-child(n+4){border-bottom:0}
+.step::before{content:"0" counter(s);font:500 .8rem var(--mono);color:var(--acc);display:block;margin-bottom:14px}
+.step p{color:var(--mute);font-size:.94rem;margin-top:8px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:30px}
+.alt .panel{background:var(--bg)}
+.fld{margin-bottom:22px}.fld label{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:8px}.fld output{font-family:var(--mono);color:var(--acc)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.res{font:400 clamp(2.4rem,5vw,3.6rem)/1 var(--serif);color:var(--acc);margin:6px 0 4px}
+.math{font:.78rem/1.7 var(--mono);color:var(--mute);margin-top:18px;border-top:1px dashed var(--line);padding-top:14px}
+.tog{display:inline-flex;border:1px solid var(--line);border-radius:99px;padding:4px;margin:32px 0 0;background:var(--bg)}
+.tog button{border:0;background:none;color:var(--mute);padding:9px 20px;border-radius:99px;font:500 .9rem var(--sans);cursor:pointer}
+.tog button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.cmp{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.cmp li{display:flex;gap:14px;align-items:baseline;background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.cmp li i{font:normal .75rem var(--mono);color:var(--mute);min-width:62px}
+.cmp.auto li{border-color:color-mix(in srgb,var(--acc) 45%,var(--line))}.cmp.auto li i{color:var(--acc)}
+.cmp li.hu i{color:var(--sig)}
+.faq details{border-bottom:1px solid var(--line);padding:20px 0}.faq summary{font:400 1.2rem var(--serif);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::after{content:"+";color:var(--acc)}.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--mute);margin-top:12px;max-width:70ch}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.pr{list-style:none;padding:0;margin:0;display:grid;gap:16px}.pr li{padding-left:20px;border-left:2px solid var(--acc)}.pr b{display:block;font-weight:500}.pr span{color:var(--mute);font-size:.94rem}
+form{display:grid;gap:16px}.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form label{font-size:.88rem;display:grid;gap:6px;font-weight:500}
+input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
+textarea{min-height:110px;resize:vertical}
+.err{color:var(--sig);font-size:.8rem;min-height:1em;font-weight:400}
+.hp{position:absolute;left:-9999px}
+.status{border-radius:12px;padding:14px 16px;font-size:.92rem;display:none}.status.show{display:block;background:color-mix(in srgb,var(--sig) 12%,transparent);border:1px solid var(--sig)}
+.status.ok{background:var(--accsoft);border-color:var(--acc)}
+.final{text-align:center}.final .lede{margin-inline:auto}.final .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:36px 0 48px;font-size:.88rem;color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media (max-width:900px){.hgrid,.about,.calc{grid-template-columns:1fr}.g3,.steps{grid-template-columns:1fr 1fr}.step:nth-child(n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:20px 24px;border-bottom:1px solid var(--line);gap:16px}nav ul.open{display:flex}.menu{display:block}.hide-m{display:none}section{padding:72px 0}}
+@media (max-width:600px){.g3,.g2,.steps,.row{grid-template-columns:1fr}.node .tag{display:none}.node{grid-template-columns:36px 1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap nav">
+<a class="logo" href="#top" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/><rect x="13" y="2" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="2" y="13" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="9" height="9" rx="2" fill="var(--sig)"/></svg><span data-c="brand"></span></a>
+<nav aria-label="Primary"><ul id="nav"></ul></nav>
+<div style="display:flex;gap:10px;align-items:center"><a class="btn p sm hide-m" href="#contact" data-c="cta"></a><button class="tgl" id="tg" type="button" aria-pressed="false">Dark</button><button class="menu" id="mb" aria-expanded="false" aria-controls="nav">Menu</button></div>
+</div></header>
+
+<main id="main">
+<section class="hero" id="top"><div class="wrap hgrid">
+<div>
+<span class="eyebrow" data-c="eyebrow"></span>
+<h1>Stop doing the same <em>task</em> twice.</h1>
+<p class="lede" id="sub"></p>
+<div class="cta"><a class="btn p" href="#contact" data-c="cta"></a><a class="btn s" href="#calculator">Estimate what you could save</a></div>
+<p class="fine">Free 30-minute conversation. No obligation, no pressure.</p>
+</div>
+<div class="flow rv" aria-label="Example automated workflow">
+<div class="top"><span>Illustrative workflow</span><span id="clock">auto-playing</span></div>
+<div id="nodes"></div>
+<div class="log" id="log" aria-live="off"></div>
+<p class="note">Concept demonstration. Select a step to explore it.</p>
+</div>
+</div></section>
+
+<section class="alt" id="problems"><div class="wrap">
+<span class="eyebrow">The hidden cost</span>
+<h2>Busywork rarely shows up on an invoice. It still costs you.</h2>
+<div class="grid g3" id="problemGrid"></div>
+</div></section>
+
+<section id="services"><div class="wrap">
+<span class="eyebrow">Services</span>
+<h2>Six ways we take work off your team’s plate.</h2>
+<p class="lede">Start with one workflow. Add more when it’s earning its keep.</p>
+<div class="grid g3 svc" id="svcGrid"></div>
+</div></section>
+
+<section class="alt" id="process"><div class="wrap">
+<span class="eyebrow">How it works</span>
+<h2>A clear path from “where do we start?” to a working system.</h2>
+<div class="steps" id="steps"></div>
+</div></section>
+
+<section id="calculator"><div class="wrap">
+<span class="eyebrow">Automation opportunity calculator</span>
+<h2>See the shape of the opportunity.</h2>
+<p class="lede">Adjust the sliders. The maths is shown, because an estimate you can’t check isn’t worth much.</p>
+<div class="calc">
+<div class="panel" id="sliders"></div>
+<div class="panel"><p style="color:var(--mute)">Illustrative time released per month</p><div class="res" id="rh">—</div><p id="rv" style="color:var(--mute)"></p>
+<div class="math" id="math"></div>
+<p class="math" style="border:0;padding-top:0">An estimate, not a promise. Real results depend on your processes, data quality and how much can safely be automated.</p></div>
+</div></div></section>
+
+<section class="alt" id="compare"><div class="wrap">
+<span class="eyebrow">Before and after</span>
+<h2>The same enquiry, two ways.</h2>
+<p class="lede">An illustrative scenario: a new enquiry arrives by email at a service business.</p>
+<div class="tog" role="group" aria-label="Workflow view"><button aria-pressed="true" data-m="man">Manual</button><button aria-pressed="false" data-m="auto">Automated</button></div>
+<ul class="cmp" id="cmp"></ul>
+</div></section>
+
+<section id="usecases"><div class="wrap">
+<span class="eyebrow">Illustrative use cases</span>
+<h2>Where automation tends to fit.</h2>
+<p class="lede">These are examples of what’s possible, not completed client projects.</p>
+<div class="grid g3" id="ucGrid"></div>
+</div></section>
+
+<section class="alt" id="about"><div class="wrap about">
+<div><span class="eyebrow">Approach</span><h2>Automation that stays accountable.</h2>
+<p class="lede" data-c="aboutText"></p></div>
+<ul class="pr" id="principles"></ul>
+</div></section>
+
+<section class="faq" id="faq"><div class="wrap">
+<span class="eyebrow">Questions</span><h2>Straight answers to the usual worries.</h2>
+<div style="margin-top:36px;max-width:860px" id="faqList"></div>
+</div></section>
+
+<section class="alt" id="contact"><div class="wrap about">
+<div><span class="eyebrow">Book a consultation</span><h2>Tell us what’s eating your week.</h2>
+<p class="lede">A short conversation to understand one process and tell you honestly whether automation is worth it.</p>
+<ul class="pr" style="margin-top:32px"><li><b>What happens next</b><span>We reply, agree a time, and talk through your workflow.</span></li><li><b>What to bring</b><span>One repetitive process and the tools involved. That’s it.</span></li><li><b>Your data</b><span>Only what the form asks for, used only to reply to you.</span></li></ul>
+<p class="fine" id="bookNote"></p></div>
+<form id="f" class="panel" novalidate>
+<div class="row"><label>Name<input name="name" autocomplete="name" required><span class="err"></span></label>
+<label>Business email<input name="email" type="email" autocomplete="email" required><span class="err"></span></label></div>
+<div class="row"><label>Company<input name="company" autocomplete="organization"><span class="err"></span></label>
+<label>What would you like to automate?<select name="type" required><option value="">Select…</option><option>Enquiries and lead handling</option><option>Admin and documents</option><option>Reporting</option><option>Connecting our tools</option><option>Not sure yet</option></select><span class="err"></span></label></div>
+<label>Current challenge<textarea name="msg" required placeholder="e.g. Enquiries sit in a shared inbox for a day before anyone replies."></textarea><span class="err"></span></label>
+<div class="row"><label>Timeline (optional)<select name="time"><option value="">No preference</option><option>Exploring</option><option>Within 3 months</option><option>As soon as possible</option></select></label>
+<label>Budget range (optional)<select name="budget"><option value="">Prefer to discuss</option><option>Under €2,000</option><option>€2,000–€10,000</option><option>€10,000+</option></select></label></div>
+<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label style="font-weight:400;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" name="consent" style="width:auto;margin-top:5px" required><span>I agree to be contacted about this enquiry. <a href="#">Privacy policy</a> (placeholder).</span></label><span class="err" id="ce"></span>
+<button class="btn p" type="submit" id="sb">Send enquiry</button>
+<div class="status" id="st" role="status"></div>
+</form></div></section>
+
+<section class="final"><div class="wrap"><h2>Pick one process. Let’s see if it’s worth automating.</h2>
+<p class="lede">If it isn’t, we’ll tell you.</p><div class="cta"><a class="btn p" href="#contact" data-c="cta"></a></div></div></section>
+</main>
+<footer><div class="wrap"><span>© <span data-c="brand"></span>. Concept website, placeholder content.</span><span data-c="email"></span></div></footer>
+
+<script>
+/* ============ EDIT HERE: central configuration ============ */
+const CONFIG={
+ brand:"Tessera",
+ tagline:"Practical AI automation for growing businesses",
+ eyebrow:"AI workflow automation",
+ sub:"We design AI workflows that qualify enquiries, update your CRM and follow up, with a person approving anything that matters.",
+ cta:"Book a free consultation",
+ email:"hello@example.com",            // placeholder
+ phone:"",                              // placeholder
+ location:"",                           // placeholder, do not invent
+ founder:"",                            // placeholder
+ social:{linkedin:""},
+ bookingUrl:"",                         // e.g. a Calendly link
+ formEndpoint:"",                       // e.g. a Formspree/your API URL; empty = demo mode
+ aboutText:"We build automation around how your business already works, start small, and keep people in control of decisions. Replace this text with your real story when ready.",
+ nav:[["Services","#services"],["Process","#process"],["Calculator","#calculator"],["Use cases","#usecases"],["FAQ","#faq"]],
+ problems:[["Slow replies","Enquiries wait in an inbox while the team is busy. Interested buyers move on."],["Copy-and-paste work","The same details get retyped between email, spreadsheets and CRM."],["Knowledge in heads","Answers live with one person, so every question interrupts them."]],
+ services:[
+  ["Workflow automation","Repetitive admin eats hours and invites small errors.","We connect your tools and automate the routine steps.","Fewer handoffs and more consistent work.","Invoice intake, onboarding checklists, status updates.","Professional services, trades, clinics."],
+  ["AI agents & assistants","Staff answer the same questions again and again.","Assistants that handle structured tasks and escalate to a person when unsure.","Faster answers, with oversight built in.","Internal knowledge assistant, first-line triage.","Operations-heavy teams."],
+  ["CRM & sales automation","Leads go cold between enquiry and follow-up.","Capture, qualify, route and follow up automatically.","Quicker replies and a tidier pipeline.","Lead scoring, meeting scheduling, reminders.","Agencies, B2B services."],
+  ["Customer support automation","Support volume grows faster than the team.","Draft replies, route tickets and surface answers for your agents.","Shorter queues, calmer teams.","Ticket tagging, suggested replies.","E-commerce, hospitality."],
+  ["Custom AI solutions","Off-the-shelf tools don’t fit your process.","A tailored solution scoped to one clear problem.","Technology shaped around your work.","Document extraction, reporting pipelines.","Businesses with unusual workflows."],
+  ["AI consulting","You’re unsure where AI is worth the effort.","A workflow audit and a realistic, prioritised plan.","Clarity before you spend.","Opportunity map, build-or-skip advice.","Anyone starting out."]],
+ steps:[["Discovery","A free conversation about your goals and tools."],["Workflow audit","We map one process and find what’s worth automating."],["Solution design","A plain-language plan you approve before we build."],["Implementation","We build and connect it to your existing systems."],["Testing & refinement","We test with real scenarios and adjust."],["Deployment & improvement","Launch, train your team, then keep improving."]],
+ usecases:[["Customer enquiries","Replies drafted and routed, edge cases flagged for staff."],["Document processing","Key fields extracted from forms and invoices for review."],["Lead management","New leads scored, logged and followed up."],["Appointment scheduling","Requests matched to availability and confirmed."],["Internal knowledge assistant","Staff ask questions of policies and procedures."],["Routine reporting","Weekly figures compiled from several systems."]],
+ principles:[["Human in the loop","People approve consequential actions."],["Honest scoping","We say when automation isn’t the right answer."],["Transparent by default","You can see what each automation does and why."],["Data minimisation","We use only the data a workflow needs."]],
+ faq:[["Is AI automation expensive?","It depends on scope. Starting with one workflow keeps cost proportionate, and we’ll give you a clear estimate before any work begins."],["Is it difficult to integrate?","Most modern tools connect through standard integrations. We check compatibility during the audit."],["Will it work with our existing systems?","Usually, yes. If something can’t be connected sensibly, we’ll say so early."],["Is our data secure?","We apply data minimisation and access controls and will explain exactly how data flows. We don’t claim formal certifications."],["How long does it take?","A small workflow can be quick; larger work takes longer. You’ll get a timeline after the audit."],["Do our people need technical skills?","No. We design for non-technical users and provide guidance."],["What if the AI gets it wrong?","Workflows include review points, confidence checks and escalation to a person, and we test failure cases."]],
+ flow:[["IN","Enquiry arrives","Form or email received","auto","New enquiry from a prospective client received."],["AI","AI qualification","Reads and categorises it","auto","Classified: service enquiry. Fit assessed against your criteria."],["CRM","CRM updated","Contact and notes saved","auto","Contact created, details logged, owner assigned."],["MAIL","Follow-up drafted","Personal reply prepared","auto","Reply drafted in your tone, ready for review."],["YOU","Human approval","You review what matters","human","Awaiting your approval before anything is sent."]],
+ manual:[["Step 1","Enquiry sits in a shared inbox"],["Step 2","Someone reads it when free"],["Step 3","Details retyped into the CRM"],["Step 4","Reply written from scratch"],["Step 5","Follow-up depends on memory"]],
+ auto:[["Instant","Enquiry captured and categorised"],["Instant","Details logged in the CRM"],["Drafted","Reply prepared in your voice"],["You","Review and approve with one click"],["Scheduled","Follow-up reminders set automatically"]]
+};
+/* =========================================================== */
+const $=s=>document.querySelector(s),h=(t,a,c)=>{const e=document.createElement(t);Object.assign(e,a||{});(c||[]).forEach(x=>e.append(x));return e};
+document.querySelectorAll("[data-c]").forEach(e=>e.textContent=CONFIG[e.dataset.c]||"");
+document.querySelectorAll("a[data-c=cta]").forEach(a=>{if(CONFIG.bookingUrl)a.href="#contact"});
+$("#sub").textContent=CONFIG.sub;
+CONFIG.nav.forEach(([t,u])=>$("#nav").append(h("li",{},[h("a",{href:u,textContent:t})])));
+$("#mb").onclick=e=>{const o=$("#nav").classList.toggle("open");e.target.setAttribute("aria-expanded",o)};
+$("#nav").onclick=e=>{if(e.target.tagName=="A")$("#nav").classList.remove("open")};
+CONFIG.problems.forEach(([t,d],i)=>$("#problemGrid").append(h("div",{className:"card rv"},[h("span",{className:"k",textContent:"0"+(i+1)}),h("h3",{textContent:t}),h("p",{textContent:d})])));
+CONFIG.services.forEach(s=>{const c=h("div",{className:"card rv"},[h("h3",{textContent:s[0]}),h("p",{textContent:s[2]})]);
+ const d=h("details");d.innerHTML=`<summary>The detail</summary><div><b>Problem:</b> ${s[1]}</div><div><b>Benefit:</b> ${s[3]}</div><div><b>Example workflows:</b> ${s[4]}</div><div><b>Suited to:</b> ${s[5]}</div>`;c.append(d);$("#svcGrid").append(c)});
+CONFIG.steps.forEach(([t,d])=>$("#steps").append(h("div",{className:"step"},[h("h3",{textContent:t}),h("p",{textContent:d})])));
+CONFIG.usecases.forEach(([t,d])=>$("#ucGrid").append(h("div",{className:"card rv"},[h("h3",{textContent:t}),h("p",{textContent:d})])));
+CONFIG.principles.forEach(([t,d])=>$("#principles").append(h("li",{},[h("b",{textContent:t}),h("span",{textContent:d})])));
+CONFIG.faq.forEach(([q,a])=>$("#faqList").append(h("details",{},[h("summary",{textContent:q}),h("p",{textContent:a})])));
+$("#bookNote").textContent=CONFIG.bookingUrl?"":"Scheduling isn’t connected yet. Set bookingUrl in the configuration to enable it.";
+if(CONFIG.bookingUrl)$("#bookNote").append(h("a",{className:"btn s sm",href:CONFIG.bookingUrl,textContent:"Pick a time directly"}));
+
+/* hero workflow */
+const nodes=CONFIG.flow.map((n,i)=>{const b=h("button",{className:"node"+(n[3]=="human"?" human":""),type:"button"},[h("span",{className:"ic",textContent:n[0]}),h("span",{},[h("b",{textContent:n[1]}),h("span",{className:"d",textContent:n[2]})]),h("span",{className:"tag",textContent:n[3]=="human"?"person":"auto"})]);
+ b.onclick=()=>{paused=true;set(i);$("#clock").textContent="paused"};$("#nodes").append(b);return b});
+let cur=0,paused=false;
+function set(i){cur=i;nodes.forEach((n,j)=>n.classList.toggle("on",j==i));$("#log").textContent="› "+CONFIG.flow[i][4]}
+set(0);
+const rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+if(rm){paused=true;$("#clock").textContent="select a step"}else setInterval(()=>{if(!paused)set((cur+1)%nodes.length)},2200);
+
+/* calculator */
+const F=[["emp","Team members doing repetitive work",1,100,8,""],["hrs","Hours per person per week",1,30,6," h"],["cost","Approx. hourly cost (€)",10,120,25,""],["pct","Share of that work that could be automated",5,80,30,"%"]];
+F.forEach(f=>{const w=h("div",{className:"fld"});w.innerHTML=`<label for="${f[0]}">${f[1]}<output id="o${f[0]}"></output></label><input type="range" id="${f[0]}" min="${f[2]}" max="${f[3]}" value="${f[4]}">`;$("#sliders").append(w);w.querySelector("input").oninput=calc});
+function calc(){const v=Object.fromEntries(F.map(f=>[f[0],+$("#"+f[0]).value]));F.forEach(f=>$("#o"+f[0]).textContent=(f[0]=="cost"?"€":"")+v[f[0]]+f[5]);
+ const hrs=v.emp*v.hrs*4.33*v.pct/100,val=hrs*v.cost;
+ $("#rh").textContent=Math.round(hrs).toLocaleString()+" hours";$("#rv").textContent="Roughly €"+Math.round(val).toLocaleString()+" of staff time per month.";
+ $("#math").innerHTML=`${v.emp} people × ${v.hrs} h × 4.33 weeks × ${v.pct}% = ${Math.round(hrs)} h<br>${Math.round(hrs)} h × €${v.cost} = €${Math.round(val).toLocaleString()}`}
+calc();
+
+/* before/after */
+function cmp(m){const l=$("#cmp");l.className="cmp"+(m=="auto"?" auto":"");l.innerHTML="";CONFIG[m].forEach(([a,b])=>l.append(h("li",{className:a=="You"?"hu":""},[h("i",{textContent:a}),h("span",{textContent:b})])))}
+cmp("man");document.querySelectorAll(".tog button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tog button").forEach(x=>x.setAttribute("aria-pressed",x==b));cmp(b.dataset.m)});
+
+/* form */
+const f=$("#f"),st=$("#st");
+function say(m,ok){st.textContent=m;st.className="status show"+(ok?" ok":"")}
+f.onsubmit=async e=>{e.preventDefault();let bad=0;
+ f.querySelectorAll("[required]").forEach(i=>{const er=i.type=="checkbox"?$("#ce"):i.parentElement.querySelector(".err");let m="";
+  if(i.type=="checkbox"?!i.checked:!i.value.trim())m=i.type=="checkbox"?"Please confirm consent.":"Required.";
+  else if(i.type=="email"&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value))m="Enter a valid email.";
+  er.textContent=m;if(m)bad++});
+ if(bad)return say("Please fix the highlighted fields.");
+ if(f.website.value)return;
+ if(!CONFIG.formEndpoint)return say("Demo mode: validation passed, but no backend is connected, so nothing was sent. Set formEndpoint in the configuration before launch.");
+ $("#sb").disabled=true;
+ try{const d=Object.fromEntries(new FormData(f));delete d.website;
+  const r=await fetch(CONFIG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)});
+  if(!r.ok)throw 0;say("Thank you. Your enquiry has been sent.",1);f.reset()}
+ catch(_){say("Something went wrong and your enquiry was not sent. Please try again or email "+CONFIG.email+".")}
+ $("#sb").disabled=false};
+
+/* light / dark toggle (defaults to system setting, remembers choice) */
+const root=document.documentElement,tb=$("#tg");
+function eff(){return root.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}
+function paint(){const d=eff()=="dark";tb.setAttribute("aria-pressed",d);tb.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");tb.textContent=d?"Light":"Dark"}
+try{const s=localStorage.getItem("theme");if(s)root.dataset.theme=s}catch(_){}
+paint();
+tb.onclick=()=>{const n=eff()=="dark"?"light":"dark";root.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(_){}paint()};
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+</script>
+</body>
+</html>
