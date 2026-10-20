@@ -7,14 +7,15 @@
 <meta name="description" content="Tessera designs AI workflow automation, assistants and CRM automation that remove repetitive work, with people approving what matters.">
 <meta property="og:title" content="Tessera — AI workflow automation for growing businesses">
 <meta property="og:description" content="Practical AI automation for SMBs: fewer repeated tasks, faster replies, humans in control.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cstyle%3E.a%7Bfill:%2314150f%7D.b%7Bfill:none;stroke:%2314150f;stroke-width:1.6%7D@media(prefers-color-scheme:dark)%7B.a%7Bfill:%23eeebe2%7D.b%7Bstroke:%23eeebe2%7D%7D%3C/style%3E%3Crect class='a' x='2' y='2' width='9' height='9' rx='2'/%3E%3Crect class='b' x='13' y='2' width='9' height='9' rx='2'/%3E%3Crect class='b' x='2' y='13' width='9' height='9' rx='2'/%3E%3Crect x='13' y='13' width='9' height='9' rx='2' fill='%23d9531e'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f4f1ea;--surf:#fbf9f4;--ink:#14150f;--mute:#5c5d52;--line:#dcd7ca;--acc:#1f6f5c;--sig:#d9531e;--accsoft:#e3eee9;
 --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f110d;--surf:#171a14;--ink:#eeebe2;--mute:#a1a395;--line:#2b2f26;--acc:#5fc2a5;--sig:#ff8a54;--accsoft:#1a2b25;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0f110d;--surf:#171a14;--ink:#eeebe2;--mute:#a1a395;--line:#2b2f26;--acc:#5fc2a5;--sig:#ff8a54;--accsoft:#1a2b25;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-mode]){--bg:#0f110d;--surf:#171a14;--ink:#eeebe2;--mute:#a1a395;--line:#2b2f26;--acc:#5fc2a5;--sig:#ff8a54;--accsoft:#1a2b25;color-scheme:dark}}
+:root[data-mode="dark"]{--bg:#0f110d;--surf:#171a14;--ink:#eeebe2;--mute:#a1a395;--line:#2b2f26;--acc:#5fc2a5;--sig:#ff8a54;--accsoft:#1a2b25;color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
@@ -38,7 +39,7 @@ nav a{text-decoration:none;font-size:.93rem;color:var(--mute)}nav a:hover{color:
 .btn.p{background:var(--ink);color:var(--bg)}.btn.p:hover{transform:translateY(-2px);background:var(--acc);border-color:var(--acc);color:#fff}
 .btn.s{background:transparent;color:var(--ink)}.btn.s:hover{background:var(--surf)}
 .btn.sm{padding:9px 16px;font-size:.85rem}
-.tgl{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:8px 14px;font:500 .82rem var(--sans);cursor:pointer;min-width:68px}.tgl:hover{background:var(--surf)}
+.tgl{position:relative;width:56px;height:30px;border-radius:999px;border:1px solid var(--line);background:var(--surf);cursor:pointer;padding:0;flex:none}.tgl::before{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--ink);transition:transform .25s,background .25s}.tgl.on::before{transform:translateX(26px);background:var(--acc)}.tgl svg{position:absolute;top:7px;width:14px;height:14px;pointer-events:none;color:var(--mute)}.tgl .su{left:7px}.tgl .mo{right:7px}
 .menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit}
 .hero{padding:72px 0 88px}
 .hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
@@ -115,7 +116,7 @@ nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:col
 <header><div class="wrap nav">
 <a class="logo" href="#top" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor"/><rect x="13" y="2" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="2" y="13" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="9" height="9" rx="2" fill="var(--sig)"/></svg><span data-c="brand"></span></a>
 <nav aria-label="Primary"><ul id="nav"></ul></nav>
-<div style="display:flex;gap:10px;align-items:center"><a class="btn p sm hide-m" href="#contact" data-c="cta"></a><button class="tgl" id="tg" type="button" aria-pressed="false">Dark</button><button class="menu" id="mb" aria-expanded="false" aria-controls="nav">Menu</button></div>
+<div style="display:flex;gap:10px;align-items:center"><a class="btn p sm hide-m" href="#contact" data-c="cta"></a><button class="tgl" id="tg" type="button" role="switch" aria-checked="false" aria-label="Dark mode"><svg class="su" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="mo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg></button><button class="menu" id="mb" aria-expanded="false" aria-controls="nav">Menu</button></div>
 </div></header>
 
 <main id="main">
@@ -308,11 +309,11 @@ f.onsubmit=async e=>{e.preventDefault();let bad=0;
 
 /* light / dark toggle (defaults to system setting, remembers choice) */
 const root=document.documentElement,tb=$("#tg");
-function eff(){return root.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}
-function paint(){const d=eff()=="dark";tb.setAttribute("aria-pressed",d);tb.setAttribute("aria-label",d?"Switch to light mode":"Switch to dark mode");tb.textContent=d?"Light":"Dark"}
-try{const s=localStorage.getItem("theme");if(s)root.dataset.theme=s}catch(_){}
+function eff(){return root.dataset.mode||root.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}
+function paint(){const d=eff()=="dark";tb.setAttribute("aria-checked",d);tb.classList.toggle("on",d)}
+try{const s=localStorage.getItem("theme");if(s)root.dataset.mode=s}catch(_){}root.dataset.mode=eff();
 paint();
-tb.onclick=()=>{const n=eff()=="dark"?"light":"dark";root.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(_){}paint()};
+tb.onclick=()=>{const n=eff()=="dark"?"light":"dark";root.dataset.mode=n;try{localStorage.setItem("theme",n)}catch(_){}paint()};
 
 /* reveal */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
