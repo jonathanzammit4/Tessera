@@ -170,7 +170,7 @@ nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:col
 <span class="eyebrow">Before and after</span>
 <h2>The same enquiry, two ways.</h2>
 <p class="lede">An illustrative scenario: a new enquiry arrives by email at a service business.</p>
-<div class="tog" role="group" aria-label="Workflow view"><button aria-pressed="true" data-m="man">Manual</button><button aria-pressed="false" data-m="auto">Automated</button></div>
+<div class="tog" role="group" aria-label="Workflow view"><button aria-pressed="true" data-m="manual">Manual</button><button aria-pressed="false" data-m="auto">Automated</button></div>
 <ul class="cmp" id="cmp"></ul>
 </div></section>
 
@@ -287,7 +287,7 @@ calc();
 
 /* before/after */
 function cmp(m){const l=$("#cmp");l.className="cmp"+(m=="auto"?" auto":"");l.innerHTML="";CONFIG[m].forEach(([a,b])=>l.append(h("li",{className:a=="You"?"hu":""},[h("i",{textContent:a}),h("span",{textContent:b})])))}
-cmp("man");document.querySelectorAll(".tog button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tog button").forEach(x=>x.setAttribute("aria-pressed",x==b));cmp(b.dataset.m)});
+cmp("manual");document.querySelectorAll(".tog button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tog button").forEach(x=>x.setAttribute("aria-pressed",x==b));cmp(b.dataset.m)});
 
 /* form */
 const f=$("#f"),st=$("#st");
