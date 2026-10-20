@@ -59,7 +59,15 @@ nav a{text-decoration:none;font-size:.93rem;color:var(--mute)}nav a:hover{color:
 .node.human.on .ic{background:var(--sig);border-color:var(--sig)}
 .log{margin-top:14px;padding:12px 14px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font:.78rem/1.5 var(--mono);color:var(--mute);min-height:3.4em}
 .note{font:.72rem var(--mono);color:var(--mute);margin-top:10px}
-.grid{display:grid;gap:20px;margin-top:36px}.svc{align-items:start}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.grid{display:grid;gap:20px;margin-top:36px}.sc{text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%;display:flex;flex-direction:column}.sc p{color:var(--mute)}.sc .more{margin-top:auto;padding-top:20px;font:500 .85rem var(--sans);color:var(--acc);transition:transform .25s}.sc:hover .more{transform:translateX(4px)}
+dialog{position:fixed;inset:0 0 0 auto;margin:0;height:100%;max-height:none;width:min(480px,100%);border:0;border-left:1px solid var(--line);background:var(--bg);color:var(--ink);padding:28px 28px calc(28px + env(safe-area-inset-bottom,0px));transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);overflow-y:auto}
+dialog.in{transform:none}dialog::backdrop{background:rgba(10,10,8,.45)}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.x{background:none;border:1px solid var(--line);color:var(--ink);width:36px;height:36px;border-radius:50%;font-size:1.2rem;cursor:pointer}
+dialog h3{font-size:2rem}.dl{color:var(--mute);margin-top:12px}
+#dd{margin:24px 0}#dd div{padding:14px 0;border-top:1px solid var(--line)}#dd dt{font:500 .7rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}#dd dd{margin:6px 0 0}
+.df{display:flex;justify-content:space-between;align-items:center;gap:12px}.nv{display:flex;gap:8px}.nv button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font-size:1rem}.nv button:hover,.x:hover{background:var(--surf)}
+body:has(dialog[open]){overflow:hidden}
+@media(max-width:700px){dialog{inset:auto 0 0 0;height:auto;max-height:88%;width:100%;border:0;border-top:1px solid var(--line);border-radius:20px 20px 0 0;transform:translateY(100%)}}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
 .card{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:28px;transition:transform .25s,border-color .25s}
 .card:hover{transform:translateY(-4px);border-color:var(--acc)}
 .card p{color:var(--mute);font-size:.97rem;margin-top:10px}
@@ -214,6 +222,7 @@ nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:col
 <section class="final"><div class="wrap"><h2>Pick one process. Let’s see if it’s worth automating.</h2>
 <p class="lede">If it isn’t, we’ll tell you.</p><div class="cta"><a class="btn p" href="#contact" data-c="cta"></a></div></div></section>
 </main>
+<dialog id="dlg" aria-labelledby="dt"><div class="dh"><span class="eyebrow" id="dk" style="margin:0"></span><button class="x" id="dx" type="button" aria-label="Close">×</button></div><h3 id="dt"></h3><p class="dl" id="dp"></p><dl id="dd"></dl><div class="df"><a class="btn p sm" href="#contact" id="dc">Discuss this service</a><div class="nv"><button type="button" id="dprev" aria-label="Previous service">←</button><button type="button" id="dnext" aria-label="Next service">→</button></div></div></dialog>
 <footer><div class="wrap"><span>© <span data-c="brand"></span>. Concept website, placeholder content.</span><span data-c="email"></span></div></footer>
 
 <script>
@@ -258,14 +267,23 @@ CONFIG.nav.forEach(([t,u])=>$("#nav").append(h("li",{},[h("a",{href:u,textConten
 $("#mb").onclick=e=>{const o=$("#nav").classList.toggle("open");e.target.setAttribute("aria-expanded",o)};
 $("#nav").onclick=e=>{if(e.target.tagName=="A")$("#nav").classList.remove("open")};
 CONFIG.problems.forEach(([t,d],i)=>$("#problemGrid").append(h("div",{className:"card rv"},[h("span",{className:"k",textContent:"0"+(i+1)}),h("h3",{textContent:t}),h("p",{textContent:d})])));
-CONFIG.services.forEach(s=>{const c=h("div",{className:"card rv"},[h("h3",{textContent:s[0]}),h("p",{textContent:s[2]})]);
- const d=h("details");d.innerHTML=`<summary>The detail</summary><div><b>Problem:</b> ${s[1]}</div><div><b>Benefit:</b> ${s[3]}</div><div><b>Example workflows:</b> ${s[4]}</div><div><b>Suited to:</b> ${s[5]}</div>`;c.append(d);$("#svcGrid").append(c)});
+CONFIG.services.forEach((s,i)=>{const c=h("button",{className:"card rv sc",type:"button",onclick:()=>openSvc(i)},[h("span",{className:"k",textContent:"0"+(i+1)}),h("h3",{textContent:s[0]}),h("p",{textContent:s[2]}),h("span",{className:"more",textContent:"Explore →"})]);
+ $("#svcGrid").append(c)});
 CONFIG.steps.forEach(([t,d])=>$("#steps").append(h("div",{className:"step"},[h("h3",{textContent:t}),h("p",{textContent:d})])));
 CONFIG.usecases.forEach(([t,d])=>$("#ucGrid").append(h("div",{className:"card rv"},[h("h3",{textContent:t}),h("p",{textContent:d})])));
 CONFIG.principles.forEach(([t,d])=>$("#principles").append(h("li",{},[h("b",{textContent:t}),h("span",{textContent:d})])));
 CONFIG.faq.forEach(([q,a])=>$("#faqList").append(h("details",{},[h("summary",{textContent:q}),h("p",{textContent:a})])));
 $("#bookNote").textContent=CONFIG.bookingUrl?"":"Scheduling isn’t connected yet. Set bookingUrl in the configuration to enable it.";
 if(CONFIG.bookingUrl)$("#bookNote").append(h("a",{className:"btn s sm",href:CONFIG.bookingUrl,textContent:"Pick a time directly"}));
+
+/* service detail drawer */
+const dlg=$("#dlg");let si=0;
+function fill(i){si=i;const s=CONFIG.services[i];$("#dk").textContent="0"+(i+1)+" / 0"+CONFIG.services.length;$("#dt").textContent=s[0];$("#dp").textContent=s[2];$("#dd").innerHTML="";[["The problem",s[1]],["Practical benefit",s[3]],["Example workflows",s[4]],["Suited to",s[5]]].forEach(([k,v])=>$("#dd").append(h("div",{},[h("dt",{textContent:k}),h("dd",{textContent:v})])))}
+function openSvc(i){fill(i);dlg.showModal();requestAnimationFrame(()=>requestAnimationFrame(()=>dlg.classList.add("in")))}
+function closeSvc(){dlg.classList.remove("in");setTimeout(()=>{if(dlg.open)dlg.close()},300)}
+$("#dx").onclick=closeSvc;dlg.addEventListener("click",e=>{if(e.target===dlg)closeSvc()});dlg.addEventListener("cancel",e=>{e.preventDefault();closeSvc()});
+$("#dprev").onclick=()=>fill((si+CONFIG.services.length-1)%CONFIG.services.length);$("#dnext").onclick=()=>fill((si+1)%CONFIG.services.length);
+$("#dc").onclick=()=>{dlg.classList.remove("in");dlg.close()};
 
 /* hero workflow */
 const nodes=CONFIG.flow.map((n,i)=>{const b=h("button",{className:"node"+(n[3]=="human"?" human":""),type:"button"},[h("span",{className:"ic",textContent:n[0]}),h("span",{},[h("b",{textContent:n[1]}),h("span",{className:"d",textContent:n[2]})]),h("span",{className:"tag",textContent:n[3]=="human"?"person":"auto"})]);
